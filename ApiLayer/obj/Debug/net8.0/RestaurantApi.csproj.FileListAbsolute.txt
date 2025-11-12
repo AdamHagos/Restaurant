@@ -1,0 +1,7 @@
+C:\Users\dell\source\repos\RestaurantApi\obj\Debug\net8.0\RestaurantApi.csproj.AssemblyReference.cache
+C:\Users\dell\source\repos\RestaurantApi\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\dell\source\repos\RestaurantApi\obj\Debug\net8.0\RestaurantApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dell\source\repos\RestaurantApi\obj\Debug\net8.0\RestaurantApi.AssemblyInfoInputs.cache
+C:\Users\dell\source\repos\RestaurantApi\obj\Debug\net8.0\RestaurantApi.AssemblyInfo.cs
+C:\Users\dell\source\repos\RestaurantApi\obj\Debug\net8.0\RestaurantApi.csproj.CoreCompileInputs.cache
+C:\Users\dell\source\repos\RestaurantApi\obj\Debug\net8.0\RestaurantApi.MvcApplicationPartsAssemblyInfo.cache
