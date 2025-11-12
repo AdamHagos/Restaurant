@@ -1,0 +1,5 @@
+C:\Users\dell\source\repos\RestaurantBusiness\obj\Debug\net8.0\RestaurantBusiness.csproj.AssemblyReference.cache
+C:\Users\dell\source\repos\RestaurantBusiness\obj\Debug\net8.0\RestaurantBusiness.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dell\source\repos\RestaurantBusiness\obj\Debug\net8.0\RestaurantBusiness.AssemblyInfoInputs.cache
+C:\Users\dell\source\repos\RestaurantBusiness\obj\Debug\net8.0\RestaurantBusiness.AssemblyInfo.cs
+C:\Users\dell\source\repos\RestaurantBusiness\obj\Debug\net8.0\RestaurantBusiness.csproj.CoreCompileInputs.cache
