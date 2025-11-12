@@ -13,7 +13,7 @@ namespace RestaurantData
     {
         public static int AddProduct(clsProductDTO ProductDTO)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_AddNewProduct", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -51,7 +51,7 @@ namespace RestaurantData
         }
         public static bool UpdateProduct(clsProductDTO ProductDTO)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_UpdateProduct", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -90,7 +90,7 @@ namespace RestaurantData
         }
         public static bool DeleteProduct(int ProductID)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_DeleteProduct", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -107,7 +107,7 @@ namespace RestaurantData
         }
         public static clsProductDTO GetProductByID(int ProductID)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_GetProductID", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -141,7 +141,7 @@ namespace RestaurantData
         {
             var ProductsList = new List<clsProductDTO>();
 
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_GetAllProducts", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -184,7 +184,7 @@ namespace RestaurantData
         {
             var ProductsList = new List<clsProductDTO>();
 
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_GetProductsByCategoryID", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -237,7 +237,7 @@ namespace RestaurantData
 
             var ProductsList = new List<clsProductDTO>();
 
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_GetProductsByIDs", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -284,7 +284,7 @@ namespace RestaurantData
         {
             var ProductsList = new List<clsProductDTO>();
 
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_GetProductsWithAddOn", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -328,33 +328,3 @@ namespace RestaurantData
         }
     }
 }
-
-//using (var reader = command.ExecuteReader())
-//{
-//    int ProductNameIndex = reader.GetOrdinal("ProductName");
-//    int ProductDescriptionIndex = reader.GetOrdinal("ProductDescription");
-//    int QuantityIndex = reader.GetOrdinal("Quantity");
-//    int PriceIndex = reader.GetOrdinal("Price");
-//    int ImageURLIndex = reader.GetOrdinal("ImageURL");
-//    int CaloriesIndex = reader.GetOrdinal("Calories");
-//    int NotesIndex = reader.GetOrdinal("Notes");
-
-//    if (reader.Read())
-//    {
-//        string? Notes = !reader.IsDBNull(NotesIndex) ? reader.GetString(NotesIndex) : null;
-//        CartItemsList.Add(new clsCartDTO
-//        (
-//            reader.GetInt32(ProductNameIndex),
-//            reader.GetString(ProductDescriptionIndex),
-//            reader.GetByte(QuantityIndex),
-//            reader.GetDecimal(PriceIndex),
-//            reader.GetString(ImageURLIndex),
-//            reader.GetInt32(CaloriesIndex),
-//            Notes
-//        ));
-//    }
-//    else
-//    {
-//        return null;
-//    }
-//}

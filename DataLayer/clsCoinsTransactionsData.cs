@@ -15,7 +15,7 @@ namespace RestaurantData
         {
             var CoinsTransactionsHistoryList = new List<clsCoinTransactionDTO>();
 
-            using (SqlConnection conn = new SqlConnection(_connectionString))
+            using (SqlConnection conn = new SqlConnection(clsDataSettings.ConnectionString))
             {
                 using (SqlCommand command = new SqlCommand("SP_GetUserCoinsTransactionsHistory", conn))
                 {
@@ -48,7 +48,7 @@ namespace RestaurantData
         }
         public static int GetCoinsValue(int Coins)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_GetCoinsValue", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;

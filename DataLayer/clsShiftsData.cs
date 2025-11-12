@@ -13,7 +13,7 @@ namespace RestaurantData
     {
         public static int AddShift(clsShiftDTO ShiftDTO)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_AddNewShift", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -33,7 +33,7 @@ namespace RestaurantData
         }
         public static bool UpdateShift(clsShiftDTO ShiftDTO)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_UpdateShift", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -53,7 +53,7 @@ namespace RestaurantData
         }
         public static bool DeleteShift(int ShiftID)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_DeleteShift", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -70,7 +70,7 @@ namespace RestaurantData
         }
         public static clsShiftDTO GetShiftByID(int ID)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_GetShiftByID", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -100,7 +100,7 @@ namespace RestaurantData
         {
             var ShiftsList = new List<clsShiftDTO>();
 
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_GetAllShifts", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -133,7 +133,7 @@ namespace RestaurantData
         }
         public static bool IsRestaurantOpenNow()
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_IsRestaurantOpenNow", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -154,7 +154,7 @@ namespace RestaurantData
         {
             var GetDaysWithoutShiftList = new List<int>();
 
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_GetDaysWithoutSchedule", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;

@@ -21,7 +21,7 @@ namespace RestaurantData
                 AddOnIDsTable.Rows.Add(AddOnIDs[i]);
             }
             
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_AddNewProductAddOns", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -51,7 +51,7 @@ namespace RestaurantData
                 AddOnIDsTable.Rows.Add(AddOnIDs[i]);
             }
 
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_DeleteProductAddOns", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;

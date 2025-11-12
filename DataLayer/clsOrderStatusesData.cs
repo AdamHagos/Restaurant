@@ -12,8 +12,8 @@ namespace RestaurantData
     public class clsOrderStatusesData
     {
         public static bool UpdateOrderStatus(int OrderID)
-        {//i guess i dont need this function in vs code. maybe im wrong
-            using (var connection = new SqlConnection(_connectionString))
+        {
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_UpdateOrderStatus", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -31,7 +31,7 @@ namespace RestaurantData
         }
         public static byte? GetOrderCurrentStatus(int OrderID)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_GetCurrentOrderStatus", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -59,7 +59,7 @@ namespace RestaurantData
         {
             var OrderStatusesList = new List<clsOrderStatusDTO>();
 
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_GetOrderStatuses", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;

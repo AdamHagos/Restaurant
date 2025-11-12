@@ -9,7 +9,7 @@ namespace RestaurantData
     {
         public static int AddCategory(clsCategoryDTO CategoryDTO)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_AddNewCategory", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -35,7 +35,7 @@ namespace RestaurantData
         }
         public static bool UpdateCategory(clsCategoryDTO CategoryDTO)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_UpdateCategory", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -61,7 +61,7 @@ namespace RestaurantData
         }
         public static bool DeleteCategory(int CategoryID)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_DeleteCategory", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -78,7 +78,7 @@ namespace RestaurantData
         }
         public static clsCategoryDTO GetCategoryByID(int CategoryID)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_GetCategoryByID", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -112,7 +112,7 @@ namespace RestaurantData
         {
             var CategoriesList = new List<clsCategoryDTO>();
 
-            using (SqlConnection conn = new SqlConnection(_connectionString))
+            using (SqlConnection conn = new SqlConnection(clsDataSettings.ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand("SP_GetAllCategories", conn))
                 {

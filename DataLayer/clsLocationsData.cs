@@ -13,7 +13,7 @@ namespace RestaurantData
     {
         public static int AddLocation(clsLocationDTO LocationDTO)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_AddNewLocation", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -52,7 +52,7 @@ namespace RestaurantData
         }
         public static bool UpdateLocation(clsLocationDTO LocationDTO)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_UpdateLocation", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -91,7 +91,7 @@ namespace RestaurantData
         }
         public static bool DeleteLocation(int LocationID)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_DeleteLocation", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -108,7 +108,7 @@ namespace RestaurantData
         }
         public static clsLocationDTO GetLocationByID(int LocationID)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_GetLocationByID", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -147,7 +147,7 @@ namespace RestaurantData
         {
             var LocationsList = new List<clsLocationDTO>();
 
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_GetAllLocations", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;

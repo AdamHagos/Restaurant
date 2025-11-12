@@ -17,7 +17,7 @@ namespace RestaurantData
             List<byte> PaymentMethodsList = new List<byte>();
             List<decimal?> AmountList = new List<decimal?>();
 
-            using (SqlConnection conn = new SqlConnection(_connectionString))
+            using (SqlConnection conn = new SqlConnection(clsDataSettings.ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand("SP_GetOrderPaymentsInfo", conn))
                 {

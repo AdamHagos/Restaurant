@@ -15,7 +15,7 @@ namespace RestaurantData
         {
             var CartItemsList = new List<clsCartDTO>();
 
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_GetCartItemsByOrderID", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -68,7 +68,7 @@ namespace RestaurantData
                 CheckoutCartItemsTable.Rows.Add(CheckoutCartItems[i].ProductID, CheckoutCartItems[i].Quantity, CheckoutCartItems[i].Price, CheckoutCartItems[i].Notes ?? (object)DBNull.Value);
             }
 
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_CalculateCartTotalAmount", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -105,7 +105,7 @@ namespace RestaurantData
                 CheckoutCartItemsTable.Rows.Add(CheckoutCartItems[i].ProductID, CheckoutCartItems[i].Quantity, CheckoutCartItems[i].Price, CheckoutCartItems[i].Notes ?? (object)DBNull.Value);
             }
 
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_syncCartItemsWithDatabase", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;

@@ -13,7 +13,7 @@ namespace RestaurantData
     {
         public static int AddUser(clsUserDTO UserDTO)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_AddNewUser", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -52,7 +52,7 @@ namespace RestaurantData
         }
         public static bool UpdateUser(clsUserDTO UserDTO)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_UpdateUser", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -92,7 +92,7 @@ namespace RestaurantData
         }
         public static clsUserDTO GetUserByID(int ID)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_GetUserByID", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -125,7 +125,7 @@ namespace RestaurantData
         }
         public static clsUserDTO GetUserByUserNameAndPassword(string UserName, string PasswordHash)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_GetUserByUserNameANDPassword", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -159,7 +159,7 @@ namespace RestaurantData
         }
         public static clsUserDTO GetUserByUserName(string UserName)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_GetUserByUserName", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -194,7 +194,7 @@ namespace RestaurantData
         {
             var UsersList = new List<clsUserDTO>();
 
-            using (SqlConnection conn = new SqlConnection(_connectionString))
+            using (SqlConnection conn = new SqlConnection(clsDataSettings.ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand("SP_GetAllUsers", conn))
                 {

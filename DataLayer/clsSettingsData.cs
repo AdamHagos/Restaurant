@@ -13,7 +13,7 @@ namespace RestaurantData
     {
         public static clsSettingDTO Get()
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_GetSettingsData", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -30,6 +30,8 @@ namespace RestaurantData
                             reader.GetDecimal(reader.GetOrdinal("DeliveryFeePerKilo")),
                             reader.GetInt32(reader.GetOrdinal("CoinWorth")),
                             reader.GetString(reader.GetOrdinal("RestaurantAddress")),
+                            reader.GetDecimal(reader.GetOrdinal("RestaurantLatitude")),
+                            reader.GetDecimal(reader.GetOrdinal("RestaurantLongitude")),
                             reader.GetString(reader.GetOrdinal("Currency"))
                         );
                     }
@@ -42,7 +44,7 @@ namespace RestaurantData
         }
         public static bool Update(clsSettingDTO SettingDTO)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_UpdateSettingsData", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -58,6 +60,18 @@ namespace RestaurantData
                 command.Parameters.Add(new SqlParameter("@RestaurantAddress", SqlDbType.NVarChar, 100)
                 {
                     Value = SettingDTO.RestaurantAddress
+                });
+                command.Parameters.Add(new SqlParameter("@RestaurantLatitude", SqlDbType.Decimal)
+                {
+                    Value = SettingDTO.RestaurantLatitude,
+                    Precision = 9,
+                    Scale = 6
+                });
+                command.Parameters.Add(new SqlParameter("@RestaurantLongitude", SqlDbType.Decimal)
+                {
+                    Value = SettingDTO.RestaurantLongitude,
+                    Precision = 9,
+                    Scale = 6
                 });
                 command.Parameters.Add(new SqlParameter("@Currency", SqlDbType.NVarChar, 100)
                 {

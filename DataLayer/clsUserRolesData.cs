@@ -13,7 +13,7 @@ namespace RestaurantData
     {
         public static int AddUserRole(clsUserRoleDTO UserRoleDTO)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_AddNewUserRole", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -32,7 +32,7 @@ namespace RestaurantData
         }
         public static bool UpdateUserRole(clsUserRoleDTO UserRoleDTO)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_UpdateUserRole", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -50,7 +50,7 @@ namespace RestaurantData
         }
         public static bool DeleteUserRole(int UserID)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_DeleteUserRole", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -67,7 +67,7 @@ namespace RestaurantData
         }
         public static clsUserRoleDTO GetUserRoleByID(int ID)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_GetUserRoleByID", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -94,7 +94,7 @@ namespace RestaurantData
         }
         public static byte? GetUsersRole(int UserID)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_GetUsersRole", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -118,11 +118,11 @@ namespace RestaurantData
                 return (byte)UserRole.Value;
             }
         }
-        public static List<clsUserRoleDTO> GetAllUserRoles()
+        public static List<clsUserRoleWithNameDTO> GetAllUserRoles()
         {
-            var UsersRolesList = new List<clsUserRoleDTO>();
+            var UsersRolesList = new List<clsUserRoleWithNameDTO>();
 
-            using (SqlConnection conn = new SqlConnection(_connectionString))
+            using (SqlConnection conn = new SqlConnection(clsDataSettings.ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand("SP_GetAllUserRoles", conn))
                 {
@@ -135,14 +135,16 @@ namespace RestaurantData
                         int UserRoleIDIndex = reader.GetOrdinal("UserRoleID");
                         int UserRoleIndex = reader.GetOrdinal("UserRole");
                         int UserIDIndex = reader.GetOrdinal("UserID");
+                        int UserNameIndex = reader.GetOrdinal("UserName");
 
                         while (reader.Read())
                         {
-                            UsersRolesList.Add(new clsUserRoleDTO
+                            UsersRolesList.Add(new clsUserRoleWithNameDTO
                             (
                                 reader.GetInt32(UserRoleIDIndex),
                                 reader.GetByte(UserRoleIndex),
-                                reader.GetInt32(UserIDIndex)
+                                reader.GetInt32(UserIDIndex),
+                                reader.GetString(UserNameIndex)
                             ));
                         }
                     }
@@ -152,7 +154,7 @@ namespace RestaurantData
         }
         public static bool DoesUserHaveRole(int UserID)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_DoesUserHaveRole", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -173,7 +175,7 @@ namespace RestaurantData
         }
         public static int DistributeDriverOrders(int DriverID)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(clsDataSettings.ConnectionString))
             using (var command = new SqlCommand("SP_DistributeDriverOrders", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -196,7 +198,7 @@ namespace RestaurantData
         {
             var DriversList = new List<clsUserRoleWithNameDTO>();
 
-            using (SqlConnection conn = new SqlConnection(_connectionString))
+            using (SqlConnection conn = new SqlConnection(clsDataSettings.ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand("SP_GetAllDrivers", conn))
                 {
